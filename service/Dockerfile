@@ -11,7 +11,7 @@ COPY . /go/src/github.com/cpt-chewieeee/GoDoRP/service
 WORKDIR /go/src/github.com/cpt-chewieeee/GoDoRP/service
 
 
-RUN go run server.go
+RUN go build server.go
 
 # if dev setting will use pilu/fresh for code reloading via docker-compose volume sharing with local machine
 # if production setting will build binary
