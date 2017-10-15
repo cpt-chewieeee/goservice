@@ -1,5 +1,4 @@
-version: '2'
-
+version: '3'
 
 services:
   db:
@@ -20,3 +19,12 @@ services:
       - "8080:8080"
     links:
       - db
+  client:
+    build:
+      context: ./client
+    command: /usr/local/bin/start
+    volumes:
+      - ./client:/usr/local/src/client
+    ports: 
+      - "3000:3000"
+  
