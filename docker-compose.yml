@@ -1,0 +1,19 @@
+version: '3'
+services:
+  db:
+    image: postgres:9.6
+    volumes:
+      - ./postgres_data:/var/lib/postgresql/data
+    ports: 
+      - "5432"
+  service:
+    build:
+      context: ./service
+      args:
+        app_env: ${APP_ENV}
+    volumes:
+      - ./service:/go/src/github.com/user/cpt-chewieeee/GoDoRP/service
+    ports:
+      - "8080"
+    links:
+      - db
