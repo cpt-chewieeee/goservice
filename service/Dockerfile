@@ -6,20 +6,19 @@ FROM golang
 ARG app_env
 ENV APP_ENV $app_env
 
-# it is okay to leave user/GoDoRP as long as you do not want to share code with other libraries
-COPY . /go/src/github.com/cpt-chewieeee/GoDoRP/service
-WORKDIR /go/src/github.com/cpt-chewieeee/GoDoRP/service
+# WORKDIR /go/src/github.com/cpt-chewieeee/GoDoRP/service
+COPY ./start /usr/local/bin
+RUN chmod +x /usr/local/bin/start
+# RUN go get github.com/julienschmidt/httprouter
+# RUN go build server.go
 
-
-RUN go build server.go
-
-# if dev setting will use pilu/fresh for code reloading via docker-compose volume sharing with local machine
-# if production setting will build binary
-CMD if [ ${APP_ENV} = production ]; \
-	then \
-	api; \
-	else \
-	go get github.com/pilu/fresh && \
-	fresh; \
-	fi
-EXPOSE 8080
+# # if dev setting will use pilu/fresh for code reloading via docker-compose volume sharing with local machine
+# # if production setting will build binary
+# CMD if [ ${APP_ENV} = production ]; \
+# 	then \
+# 	service; \
+# 	else \
+# 	go get github.com/pilu/fresh && \
+# 	fresh; \
+# 	fi
+# EXPOSE 8080

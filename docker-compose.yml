@@ -1,4 +1,6 @@
-version: '3'
+version: '2'
+
+
 services:
   db:
     image: postgres:9.6
@@ -11,6 +13,7 @@ services:
       context: ./service
       args:
         app_env: ${APP_ENV}
+    command: /usr/local/bin/start
     volumes:
       - ./service:/go/src/github.com/user/cpt-chewieeee/GoDoRP/service
     ports:

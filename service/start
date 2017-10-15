@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+cd /go/src/github.com/user/cpt-chewieeee/GoDoRP/service
+go get github.com/julienschmidt/httprouter
+go build server.go
+
+if [ ${APP_ENV} == production ] 
+then
+    service;
+else
+    go get github.com/pilu/fresh && fresh;
+fi
