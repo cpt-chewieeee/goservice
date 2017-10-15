@@ -8,8 +8,8 @@ import (
 )
 
 func handler(w http.ResponseWriter, r *http.Request, ps httprouter.Params) {
-	fmt.Fprintf(w, "Hi there, %s!", r.URL.Path[1:], "\n")
-	fmt.Fprint(w, "Welcome!\n")
+	fmt.Fprintf(w, "Hi there, %s!", r.URL)
+	// fmt.Fprint(w, "Welcome!\n")
 }
 
 func withName(w http.ResponseWriter, r *http.Request, ps httprouter.Params) {
@@ -20,7 +20,7 @@ func main() {
 	fmt.Println("_____API_SERVICES_STARTED_____")
 
 	router := httprouter.New()
-	// router.GET("/", handler)
+	router.GET("/", handler)
 	router.GET("/test/:name", withName)
 
 	// http.HandleFunc("/", handler)
