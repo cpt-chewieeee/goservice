@@ -1,5 +1,7 @@
 #!/bin/bash
+
 cd /go/src/github.com/user/cpt-chewieeee/GoDoRP/service
+
 go get github.com/julienschmidt/httprouter
 go build server.go
 
